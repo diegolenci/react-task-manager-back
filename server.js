@@ -1,5 +1,6 @@
 import express from "express";
 import fs from "fs/promises";
+import {existsSync, readFileSync} from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
@@ -149,7 +150,7 @@ app.delete("/tasks/:id", async (req, res) => {
 });
 
 // **Se il file JSON non esiste, crearlo con dati iniziali**
-if (tasksCache.length === 0) {
+if (!existsSync(DATA_FILE) || readFileSync(DATA_FILE, "utf-8").trim() === "") {
     console.log("⚡ File tasks.json non trovato o vuoto, creazione con dati iniziali...");
     
     const getRandomDateInLastWeek = () => {
@@ -170,10 +171,11 @@ if (tasksCache.length === 0) {
 
     await saveTasks();
     console.log("✅ Dati iniziali creati con successo.");
+}else{
+    // 📌 **Caricamento dei dati iniziali all'avvio del server**
+    await loadTasks();
 }
 
-// 📌 **Caricamento dei dati iniziali all'avvio del server**
-await loadTasks();
 
 // **Avvio del server**
 app.listen(PORT, () => {
