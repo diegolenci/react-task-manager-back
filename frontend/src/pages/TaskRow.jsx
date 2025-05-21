@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TaskRow({ task }) {
   // Mostra solo le righe title, status e createdAt
   return (
     <tr>
-      <td>{task.title}</td>
+      <td>
+        <Link to={`/task/${task.id}`}>{task.title}</Link>
+      </td>
       <td
         style={{
           backgroundColor:
