@@ -1,10 +1,12 @@
 import { useState, useRef } from "react";
+import useTasks from "../hooks/useTasks";
 
 export default function Addtask() {
     const [title, setTitle] = useState("");
     const descriptionRef = useRef();
     const statusRef = useRef();
     const [error, setError] = useState("");
+    const { addTask } = useTasks();
     
     const symbols = "!@#$%^&*()-_=+[]{}|;:'\\\",.<>?/`~";
 
@@ -27,7 +29,16 @@ export default function Addtask() {
             description: descriptionRef.current?.value || "",
             status: statusRef.current?.value || "To do",
         };
-        console.log(task);
+        addTask(task)
+            .then(() => {
+                alert("Task aggiunta con successo!");
+                setTitle("");
+                if (descriptionRef.current) descriptionRef.current.value = "";
+                if (statusRef.current) statusRef.current.value = "To do";
+            })
+            .catch(err => {
+                alert("Errore: " + err.message);
+            });
     }
 
     return (
