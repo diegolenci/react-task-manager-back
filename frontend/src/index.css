@@ -34,3 +34,72 @@ h1 {
   margin-bottom: 16px;
   color: #2d3a4b;
 }
+
+
+
+
+form {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 24px 32px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+h1 {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 24px;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 500;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border: 1.5px solid #3182ce;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px 0;
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #2563eb;
+}
+
+div[style*="color: red"] {
+  margin-bottom: 12px;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
